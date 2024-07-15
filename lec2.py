@@ -91,3 +91,29 @@ import pandas
 import numpy
 
 #테스트
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+var = ["a", "a", "b", "c"]
+seaborn.countplot(x=var)
+plt.show()
+plt.clf()
+
+df = sns.load_dataset("titanic")
+sns.countplot(data = df, x = "sex", hue = "sex")
+plt.show()
+plt.clf()
+
+sns.countplot(data=df, x="class")
+sns.countplot(data=df, x="class" , hue="alive")
+plt.show()
+plt.clf()
+
+# !pip install scikit-learn
+import sklearn.metrics
+sklearn.metrics.accuracy_score()
+
+from sklearn import metrics
+metrics.accuracy_score()
+

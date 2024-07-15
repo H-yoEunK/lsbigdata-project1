@@ -1,0 +1,96 @@
+---
+title: "LS 빅데이터 스쿨 3일차"
+format: html
+jupyter: python3
+editor_options: 
+  chunk_output_type: inline
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## 파이썬 코드 청크
+
+파이썬 코드 청크는 다음과 같은 단축키를 통해서 넣을 수 있음. \* 단축키 `Ctrl + Alt + I`
+
+## 코드 청크 종류
+
+2가지 종류가 있음
+
+1.  인라인 코드 청크: 백틱 하나로 묶음
+2.  디스플레이 코드 청크: 백틱 세 개로 묶음음
+
+### 실행 가능한 코드 청크
+
+백틱 뒤에 `{python}`을 붙여주면 됨.
+
+```{python}
+1+1
+```
+
+## 코드 청크 실행 옵션
+
+옵션은 `#|` 시작함.
+
+-   `echo` 옵션: 코드를 문서에 보여줌
+-   `eval` 옵션: 코드를 돌릴 것인가, 그냥 둘 것인가를 결정
+
+``` ㅊ
+#| echo: true
+#| eval: true
+1 + 1
+```
+
+## 각주
+
+이것은 간단한 각주[^1]입니다.
+
+[^1]: 이것은 참조된 텍스트트
+
+## 취소선, 굵게, 이탤릭
+
+**굵게** 별표 두 개로 감싸기 *기울기*는 하나 ~~취소~~는 물결 두 개
+
+## 체크박스
+
+-   [x] ~~화분 물 주기~~
+-   [ ] 밀린 일기 작성
+
+## 링크 넣는 법
+
+[슬기로운 통계 생활](https://staticsticsplaybook.com/)
+
+## 이미지 넣는 법
+
+![위키피디아 흑요석](./는%20프로젝트%20폴더%20안을%20의미함)
+
+## 수식 입력 방법
+
+* 인라인 수식: $ 하나로 감싸준다 (본문에 입력)
+* 디스플레이 수식: $ 두 개로 감싸준다 (독립적인 문단)
+
+문장 안에 숫자 $5^2$를 넣어보자.
+
+$$
+\dot{a}
+$$
+
+
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{python}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{python}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
