@@ -7,5 +7,5 @@ df = pd.read_csv(gsheet_url)
 df.head()
 
 # 랜덤하게 2명을 뽑아서 보여주는 코드
-np.random.seed(20240730)
+np.random.seed(20240806)
 np.random.choice(df["이름"], 2, replace = False)

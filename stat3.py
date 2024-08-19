@@ -178,7 +178,7 @@ norm.cdf(0.54, loc = 0, scale = 1) - norm.cdf(-2, loc = 0, scale = 1)
 # P(3 < X < 5) = ?
 norm.cdf(5, loc = 3, scale = 5) - norm.cdf(3, loc = 3, scale = 5)
 # 값을 뽑았을 때 3이랑 5 사이에 있을 확률이 15%이다
-# 위 확률변수에서 표본 100개 뽑아보자
+# 위 확률변수에서 표본 1000개 뽑아보자
 x = norm.rvs(loc = 3, scale = 5, size = 1000)
 sum((x > 3) & (x < 5)) / 1000
 

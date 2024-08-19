@@ -23,7 +23,7 @@ plt.show()
 plt.clf()
 
 uniform.cdf(3.25, loc = 2, scale = 4)
-# 6까지만 0.25의 확률을 가지고 나머지는 0이니까 8.39를 6으로 바꿔도 동일하다!
+# 6까지만 각각 0.25의 확률을 가지고 나머지는 0이니까 8.39를 6으로 바꿔도 동일하다!
 uniform.cdf(8.39, loc = 2, scale = 4) - uniform.cdf(5, loc = 2, scale = 4)
 
 uniform.ppf(0.93, loc = 2, scale = 4)
@@ -50,7 +50,7 @@ a = norm.ppf(0.005, loc = 4, scale = np.sqrt(1.3333/20))
 b = norm.ppf(0.995, loc = 4, scale = np.sqrt(1.3333/20))
 
 # 모평균에 대한 구간 추정 39p
-# 정규분포에서 99%를 포함하려면 2.57쯤 되어야 한다
+# 표준정규분포에서 99%를 포함하려면 2.57쯤 되어야 한다
 # norm.ppf(0.005, loc = 0, scale = 1) = +-2.57
 # 정규분포를 따르는 표본에서 99% 포함 펜스를 치려면 2.57에서 표준편차 만큼을 불린다??
 # a = blue_x + 2.57 * np.sqrt(1.333333 / 20)
@@ -70,9 +70,9 @@ x = uniform.rvs(loc=2, scale=4, size=20*1000, random_state = 42)
 x = x.reshape(1000, 20) # 1줄당 20개
 blue_x = x.mean(axis = 1)
 
-
 sns.histplot(blue_x, stat = "density")
 plt.show()
+plt.clf()
 
 # 회색 벽돌을 생성시키는 평균과 분산은 4, 1.333333...
 uniform.var(loc = 2, scale = 4)
@@ -88,19 +88,4 @@ pdf_values = norm.pdf(x_values, loc = 4, scale = np.sqrt(1.3333/20))
 plt.plot(x_values, pdf_values, color = "red", linewidth = 1)
 
 plt.show()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

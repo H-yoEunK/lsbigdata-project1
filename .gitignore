@@ -3,4 +3,5 @@
 .RData
 .Ruserdata
 data/Koweps/*
+data/bigfile/*
 /.quarto/

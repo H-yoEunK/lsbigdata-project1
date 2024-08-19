@@ -93,3 +93,106 @@ test["SalePrice"] = test["SalePrice"].fillna(test["SalePrice"].mean())
 sub_df = pd.read_csv("./data/houseprice/sample_submission.csv")
 sub_df["SalePrice"] = test["SalePrice"]
 sub_df.to_csv("./data/houseprice/sample_submission3.csv", index = False)
+
+# -----------------------------------------------------------------------------
+
+
+house_train= pd.read_csv("data/houseprice/train.csv")
+
+tot = house_train.groupby('TotRmsAbvGrd') \
+           .agg(counts=('LotArea', 'count'),
+                mean_area=('LotArea', 'mean'),
+                price = ('SalePrice', 'mean'))
+
+# 그래프 y축 두 개로 나눠서 그리기
+fig, ax1 = plt.subplots()
+
+# 첫 번째 y축 (price)
+sns.lineplot(data=tot, x='TotRmsAbvGrd', y='price', color='black', linestyle='-', ax = ax1)
+ax1.set_xlabel('TotRmsAbvGrd')
+ax1.set_ylabel('Price', color='black')
+ax1.tick_params(axis='y', labelcolor='black')
+
+# 두 번째 y축 (mean_area)
+ax2 = ax1.twinx()  # 공유 x축을 가지는 두 번째 y축
+sns.lineplot(data=tot, x='TotRmsAbvGrd', y='mean_area', color='red', linestyle='-', ax = ax2)
+ax2.set_ylabel('Mean Area', color='red')
+ax2.tick_params(axis='y', labelcolor='red')
+fig.tight_layout()
+
+plt.title('Price and Mean Area by Total Rooms Above Ground')
+plt.show()
+plt.clf()
+# 방 개수당 표본 개수
+house_train["TotRmsAbvGrd"].value_counts().sort_index()
+
+#-------------------------------------------------------------------- 태현 + 가공
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+import numpy as np
+
+house_train = pd.read_csv("data/houseprice/train.csv")
+house_train = house_train[['LotArea','TotRmsAbvGrd','SalePrice']]
+
+house_train['TotRmsAbvGrd'].value_counts().sort_index()
+
+# 데이터 준비
+tot = house_train.groupby('TotRmsAbvGrd') \
+                .agg(mean_price=('SalePrice', 'mean'),
+                    mean_area=('LotArea', 'mean'))
+
+# 그래프 그리기
+fig, ax1 = plt.subplots(figsize = (3.9, 2))
+
+# 첫 번째 y축 (mean_price)
+sns.lineplot(data = tot, x='TotRmsAbvGrd', y='mean_price', color='black', linestyle='-')
+ax1.set_xlabel('TotRmsAbvGrd', fontsize = 5)
+ax1.set_ylabel('Mean Price', color='black', fontsize = 5)
+ax1.set_xticks(np.arange(1, 15))
+ax1.tick_params(axis='both', labelsize=5)
+
+# 두 번째 y축 (mean_area)
+ax2 = ax1.twinx() # 공유 x축을 가지는 두 번째 y축
+sns.lineplot(data = tot, x='TotRmsAbvGrd', y='mean_area', color='red', linestyle='-')
+ax2.set_ylabel('Mean Area', color='red', fontsize = 5)
+ax2.tick_params(axis='y', labelcolor='red')
+ax2.tick_params(axis='both', labelsize=5)
+
+plt.title('Mean Price and Mean Area by Total Rooms Above Ground', fontsize = 5)
+fig.tight_layout()
+
+plt.show()
+plt.clf()
+
+# -------------------------------------------------------------------- 재준 현욱
+
+house_train = pd.read_csv("data/houseprice/train.csv")
+# 데이터 준비
+tot = house_train.groupby('OverallQual') \
+                .agg(mean_price=('SalePrice', 'mean'),
+                Cond_mean=('OverallCond', 'mean'))
+
+# 그래프 그리기
+fig, ax1 = plt.subplots()
+
+# 첫 번째 y축 (counts)
+sns.lineplot(data=tot, x='OverallQual', y='mean_price', color='black', linestyle='-', ax=ax1)
+ax1.set_xlabel('OverallQual')
+ax1.set_ylabel('Mean_price', color='black')
+ax1.tick_params(axis='y', labelcolor='black')
+
+# 두 번째 y축 (mean_area)
+ax2 = ax1.twinx() # 공유 x축을 가지는 두 번째 y축
+sns.lineplot(data=tot, x='OverallQual', y='Cond_mean', color='red', linestyle='-', ax=ax2)
+ax2.set_ylabel('Cond_mean', color='red')
+ax2.tick_params(axis='y', labelcolor='red')
+
+# 그래프 제목 및 레이아웃 조정
+plt.title('Mean_price and Mean Area by Total Rooms Above Ground')
+fig.tight_layout()
+
+# 그래프 표시
+plt.show()
+plt.clf()
